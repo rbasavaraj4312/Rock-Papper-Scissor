@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>rock paper scissor</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+   
+body{
+  margin: 300px 600px;
+}
+button{
+  display: block;
+  padding: 10px;
+  width: 150px;
+  margin: 10px;
+  border: 2px solid #575757;
+  border-radius: 8px;
+}
+button :hover {
+  border: 3px solid yellowgreen;
+  border-radius: 8px;
+}
+.score{
+  height: 20px;
+  width: 45px;
+  margin-left: 33px;
+  padding: 0px 0px 0px 40px;
+  border: 2px solid #575757;
+  border-radius: 8px;
+}
+  </style>
+</head>
+
+<body>
+  <div class="ans">
+  <button class="rock"> ROCK 🪨</button>
+  <button class="paper"> PAPER 🧾</button>
+  <button class="sciccor"> SCICCOR ✂️</button>
+    </div>
+  <p>vs</p>
+  <div>
+    <button class="random"></button>
+    <div class="score"></div>
+  </div>
+
+  
+  <script>
+    var choice;
+    var score=0;
+
+    function computer(){
+      const rps = ['rock','paper','scissors']
+      const rc=Math.floor(Math.random()*3)
+      return rps[rc];
+    }
+
+    function check(){
+      var cc=computer();
+      if(choice==cc){
+        score+=0
+      }else if(choice=='rock'&&cc=='scissors'){
+        score+=1
+      }else if(choice=='paper'&&cc=='rock'){
+        score+=1
+      }else if(choice=='scissors'&&cc=='paper'){
+        score+=1
+      }
+      else{
+        score-=1
+      }
+
+      const scoreprint=document.querySelector(".score")
+      scoreprint.innerText=score;
+      const ccprint=document.querySelector(".random")
+      ccprint.innerText=cc;
+    }
+
+    const rock = document.querySelector(".rock")
+    rock.addEventListener("click",function(){
+      choice='rock'
+      check()
+    })
+
+    const paper = document.querySelector(".paper")
+    paper.addEventListener("click",function(){
+      choice='paper'
+      check()
+    })
+
+    const sciccor = document.querySelector(".sciccor")
+    sciccor.addEventListener("click",function(){
+      choice='scissors'
+      check()
+    })
+
+
+  </script>
+  
+</body>
+
+</html>
